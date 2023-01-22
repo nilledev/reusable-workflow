@@ -1,0 +1,26 @@
+name: Generate Software Bill-of-Materials (SBOM)
+
+on: 
+  workflow_call:
+    inputs:
+      sample_input:
+        required: false
+        type: string
+    secrets:
+      sample_secret:
+      required: false
+
+jobs:
+  build:
+    name: "Generate SBOM"
+    runs-on: [ self-hosted, medium ]
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+    
+      - name: "Hello World"
+        run: | 
+          echo "Hello World!"
